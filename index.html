@@ -1,0 +1,933 @@
+<!DOCTYPE html><html lang="pt-br"><!-- Mirrored by: HTTrack Website Copier/3.x. Site: desafiospremiado.com. File: /desafie/. Date: Thu, 14 Nov 2024 18:40:50 GMT --><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Desafio do Xit</title>
+    <script src="js/UFqfw93TX81h.js" type="89c798df1195f8b3c72fb552-text/javascript" async=""></script>
+    <script type="89c798df1195f8b3c72fb552-text/javascript"> (function (funnel) { var deferredEvents = []; window.funnelytics = { events: { trigger: function (name, attributes, callback, opts) { deferredEvents.push({ name: name, attributes: attributes, callback: callback, opts: opts }); } } }; var insert = document.getElementsByTagName('script')[0], script = document.createElement('script'); script.addEventListener('load', function () { window.funnelytics.init(funnel, false, deferredEvents); }); script.src = '../../cdn.funnelytics.io/track-v3.js'; script.type = 'text/javascript'; script.async = true; insert.parentNode.insertBefore(script, insert); })('09bae67d-7689-43e8-8911-96fda908a778'); </script>
+
+    <script type="89c798df1195f8b3c72fb552-text/javascript">
+        var urlBackRedirect = ''; // lembre-se de usar a url sem espaços
+        // não altere nada abaixo dessa linha
+        urlBackRedirect = urlBackRedirect = urlBackRedirect.trim() +
+            (urlBackRedirect.indexOf("?") > 0 ? '&' : '?') +
+            document.location.search.replace('?', '').toString();
+        history.pushState({}, "", location.href);
+        history.pushState({}, "", location.href);
+        window.onpopstate = function () {
+            setTimeout(function () {
+                location.href = urlBackRedirect;
+            }, 1);
+        };
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Roboto:wght@300;400;500&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e2e2e2;
+            color: #F4F4F4;
+
+            padding: 20px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #f3f3f3;
+            border-radius: 25px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease-in-out;
+        }
+
+        header img {
+            width: 150px;
+            margin-bottom: 30px;
+        }
+
+        .banner img {
+            width: 100%;
+            margin-bottom: 30px;
+            border-radius: 15px;
+        }
+
+        .ump img {
+            width: 100%;
+            margin-bottom: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #1772e7;
+            margin-bottom: 30px;
+            transition: color 0.4s ease;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            color: #000000;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #e2e2e2;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .progress {
+            height: 12px;
+            background-color: #1772e7;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        * Ajuste nas questões */ .question {
+            background-color: #e2e2e2;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 0 auto 30px auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .question h2 {
+            font-size: 20px;
+            color: #111111;
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .answers button {
+            background-color: #1772e7;
+            color: #F4F4F4;
+            border: none;
+            border-radius: 12px;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .answers button:hover {
+            background-color: #A02424;
+            transform: scale(1.02);
+        }
+
+        .answers button:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .loading img {
+            width: 80px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .popup {
+            display: none;
+            background-color: #f3f3f3;
+            padding: 30px;
+            border-radius: 15px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translate(-50%, -50%) rotate(0);
+            }
+
+            25% {
+                transform: translate(-50%, -50%) rotate(-10deg);
+            }
+
+            50% {
+                transform: translate(-50%, -50%) rotate(10deg);
+            }
+
+            75% {
+                transform: translate(-50%, -50%) rotate(-10deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(0);
+            }
+        }
+
+        .popup h2 {
+            color: #1772e7;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .popup img {
+            width: 100px;
+            margin-bottom: 10px;
+            animation: errorX 0.5s ease;
+        }
+
+        @keyframes errorX {
+            0% {
+                transform: scale(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #AFAFAF;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .question h2 {
+                font-size: 18px;
+            }
+
+            .answers button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        .final-stage {
+            display: none;
+            color: #000000;
+            text-align: center;
+        }
+
+        .final-stage button {
+            background-color: #1772e7;
+            color: #F4F4F4;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .final-stage button:hover {
+            background-color: #A02424;
+            transform: scale(1.05);
+        }
+
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+    <!-- Meta Pixel Code -->
+<script type="89c798df1195f8b3c72fb552-text/javascript">
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1259428851773647');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1259428851773647&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script type="89c798df1195f8b3c72fb552-text/javascript">
+  window.pixelId = "678ca8777f481395482252e3";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="images/oq7-NB46-T2-CLLo176x7nz-1603038416591-orig.png" alt="Logo Evino">
+
+
+
+
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Esquenta Pré-Black Friday Britânia</title>
+            <style>
+                /* Estilo para a sobreposição de fundo */
+                .popup-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
+                }
+
+                /* Escondemos inicialmente a popup */
+                .popup-overlay.hidden {
+                    display: none;
+                }
+
+                /* Estilo da popup */
+                .popup-content {
+                    background-color: #fff;
+                    padding: 30px;
+                    border-radius: 10px;
+                    text-align: center;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    max-width: 400px;
+                    width: 90%;
+                }
+
+                /* Estilo do título em preto */
+                .popup-title {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #000;
+                    margin-bottom: 10px;
+                    outline: none;
+                }
+
+                .popup-subtitle {
+                    font-size: 18px;
+                    margin-bottom: 20px;
+                    color: #555;
+                    outline: none;
+                }
+
+                /* Estilo do botão */
+                .popup-button {
+                    padding: 11px 43px;
+                    font-size: 19px;
+                    border: none;
+                    border-radius: 7px;
+                    background-color: #1772e7;
+                    color: #fff;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                }
+
+                .popup-button:hover {
+                    background-color: #0056b3;
+                }
+
+                .final-stage img {
+                    max-width: 80%;
+                    width: 100%;
+                    height: auto;
+
+                }
+            </style>
+
+
+
+<!-- Estrutura da popup -->
+<div class="popup-overlay" id="popup">
+    <div class="popup-content">
+        <div class="popup-title" contenteditable="false" style="color: #1772e7; font-weight: bold;">
+            <strong>Desafio Xit Free Fire 🎁</strong>
+        </div>
+        
+        <div class="popup-subtitle" contenteditable="false">
+            Participe do nosso desafio, respondendo ao nosso questionário você consegue resgatar um Xit Exclusivo
+            <br>
+            <b>Pronto(a) para começar?</b>
+        </div>
+        
+        <button class="popup-button" onclick="if (!window.__cfRLUnblockHandlers) return false; fecharPopup()" data-cf-modified-89c798df1195f8b3c72fb552-="">SIM!</button>
+    </div>
+</div>
+
+<script type="89c798df1195f8b3c72fb552-text/javascript">
+    // Função para fechar a popup
+    function fecharPopup() {
+        document.getElementById('popup').classList.add('hidden');
+    }
+
+    // Exibe a popup assim que a página é carregada
+    window.onload = function() {
+        document.getElementById('popup').classList.remove('hidden');
+    };
+</script>
+
+
+
+
+
+
+                
+        </header><strong><strong>
+
+                <div class="banner">
+                    <img src="images/cv-1.jpg" alt="Banner Evino">
+                </div>
+
+                <div class="ump hidden">
+                    <img src="images/1732531895091-20-18-42.jpg" alt="Banner Evino">
+                </div>
+
+                <div class="video hidden">
+                    <style>
+                        .popup {
+                            font-family: Arial, Helvetica, sans-serif;
+                            font-size: 24px;
+                            font-weight: 700;
+                            display: block;
+                            text-align: center;
+                            color: #FFFFFF;
+                            white-space: normal;
+                            width: 100%;
+                            line-height: 1.1em;
+                            padding: 0.5em 0;
+                            -webkit-box-sizing: border-box;
+                            box-sizing: border-box;
+                        }
+
+                        /* Video Container Styling */
+                        .video-container {
+                            position: relative;
+                            margin: 0 auto;
+                            background: #000;
+                            /* Background color to ensure good contrast */
+                            border-radius: 15px;
+                            /* Rounded corners */
+                            overflow: hidden;
+                            /* Hide overflow to maintain rounded corners */
+                        }
+
+                        .video-container video {
+                            width: 100%;
+                            display: block;
+                        }
+
+                        /* Play/Pause Button Styling */
+                        .play-pause-button {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            width: 60px;
+                            height: 60px;
+                            background-color: rgba(0, 0, 0, 0.7);
+                            border: none;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            transform: translate(-50%, -50%);
+                            outline: none;
+                            z-index: 10;
+                            transition: opacity 0.3s;
+                        }
+
+                        .play-pause-button.play:before {
+                            content: '';
+                            display: block;
+                            width: 0;
+                            height: 0;
+                            border-left: 20px solid white;
+                            border-top: 10px solid transparent;
+                            border-bottom: 10px solid transparent;
+                        }
+
+                        .play-pause-button.pause:before {
+                            content: '';
+                            display: block;
+                            width: 30px;
+                            height: 30px;
+                            background-color: white;
+                        }
+
+                        .play-pause-button.hidden {
+                            opacity: 0;
+                        }
+
+                        /* Pop-Up Styling */
+                        .popup {
+                            display: none;
+                            /* Hidden by default */
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            background-color: rgba(0, 0, 0, 0.7);
+                            color: white;
+                            padding: 20px;
+                            border-radius: 10px;
+                            border: 2px solid;
+                            border-color: rgb(0, 255, 0);
+                            text-align: center;
+                            cursor: pointer;
+                            z-index: 20;
+                            width: 80%;
+                            /* Adjust width as needed */
+                            max-width: 300px;
+                            /* Optional: limit maximum width */
+                        }
+
+                        /* SVG Centering */
+                        .popup svg {
+                            display: block;
+                            margin: 0 auto 10px;
+                            /* Center SVG and space it from text */
+                        }
+                    </style>
+
+                    <div class="video-container">
+                        <video id="video1" autoplay="" muted="" playsinline="">
+                            <source src="media/videomassa.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button class="play-pause-button play" onclick="if (!window.__cfRLUnblockHandlers) return false; playPause()" data-cf-modified-89c798df1195f8b3c72fb552-=""></button>
+                        <div id="popup-xxx" class="popup" onclick="if (!window.__cfRLUnblockHandlers) return false; restartVideo()" data-cf-modified-89c798df1195f8b3c72fb552-="">
+                            <span>Seu vídeo já começou</span>
+
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="46.75px" height="32.563px" viewBox="7.999 9.062 46.75 32.563" enable-background="new 7.999 9.062 46.75 32.563" xml:space="preserve">
+                                <style>
+                                    @-webkit-keyframes BLINK {
+                                        0% {
+                                            opacity: 0;
+                                        }
+
+                                        33% {
+                                            opacity: 1;
+                                        }
+
+                                        66% {
+                                            opacity: 1;
+                                        }
+
+                                        100% {
+                                            opacity: 0;
+                                        }
+                                    }
+
+                                    @keyframes BLINK {
+                                        0% {
+                                            opacity: 0;
+                                        }
+
+                                        33% {
+                                            opacity: 1;
+                                        }
+
+                                        66% {
+                                            opacity: 1;
+                                        }
+
+                                        100% {
+                                            opacity: 0;
+                                        }
+                                    }
+
+                                    .blink_1 {
+                                        -webkit-animation: BLINK 2s infinite;
+                                        animation: BLINK 2s infinite;
+                                        opacity: 0;
+                                    }
+
+                                    .blink_2 {
+                                        -webkit-animation: BLINK 2s infinite .3s;
+                                        animation: BLINK 2s infinite .3s;
+                                        opacity: 0;
+                                    }
+
+                                    .blink_3 {
+                                        -webkit-animation: BLINK 2s infinite .6s;
+                                        animation: BLINK 2s infinite .6s;
+                                        opacity: 0;
+                                    }
+
+                                    .smartplay-svg-color {
+                                        fill: #FFFFFF !important;
+                                    }
+                                </style>
+                                <g class="adjustable fg">
+                                    <path class="smartplay-svg-color" d="M53.249,39.616c-0.186,0-0.371-0.051-0.537-0.157l-43.5-27.75c-0.466-0.297-0.603-0.916-0.306-1.381c0.298-0.466,0.917-0.601,1.381-0.306l43.5,27.75c0.467,0.297,0.604,0.916,0.307,1.381C53.901,39.453,53.579,39.616,53.249,39.616z">
+                                    </path>
+                                    <path class="blink_3 smartplay-svg-color" d="M48.896,33.467l1.699,1.085c3.497-7.791,2.073-17.271-4.313-23.659c-0.391-0.391-1.023-0.391-1.414,0s-0.391,1.023,0,1.414C50.581,18.019,51.913,26.463,48.896,33.467z">
+                                    </path>
+                                    <path class="blink_3 smartplay-svg-color" d="M46.926,36.956c-0.612,0.863-1.286,1.695-2.059,2.469c-0.392,0.391-0.392,1.023,0,1.414c0.194,0.195,0.45,0.293,0.707,0.293c0.256,0,0.512-0.098,0.706-0.293c0.878-0.878,1.642-1.824,2.333-2.807L46.926,36.956z">
+                                    </path>
+                                    <path class="blink_2 smartplay-svg-color" d="M42.543,29.415l1.777,1.135c1.545-5.315,0.229-11.293-3.953-15.476c-0.392-0.391-1.023-0.391-1.414,0c-0.392,0.391-0.392,1.023,0,1.414C42.454,19.987,43.639,24.925,42.543,29.415z">
+                                    </path>
+                                    <path class="blink_2 smartplay-svg-color" d="M41,33.174c-0.563,0.94-1.235,1.837-2.047,2.646c-0.391,0.392-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293s0.512-0.098,0.707-0.293c0.916-0.914,1.676-1.924,2.317-2.984L41,33.174z">
+                                    </path>
+                                    <path class="blink_1 smartplay-svg-color" d="M35.771,25.094l2.003,1.277c0.012-0.203,0.029-0.404,0.029-0.609c0-3.079-1.2-5.974-3.381-8.153c-0.391-0.391-1.022-0.391-1.414,0c-0.391,0.391-0.391,1.023,0,1.414C34.652,20.666,35.613,22.802,35.771,25.094z">
+                                    </path>
+                                    <path class="blink_1 smartplay-svg-color" d="M35.084,29.401c-0.474,1.145-1.172,2.197-2.076,3.1c-0.391,0.391-0.391,1.023,0,1.414c0.195,0.195,0.451,0.293,0.707,0.293c0.257,0,0.513-0.098,0.707-0.293c1.008-1.006,1.795-2.17,2.361-3.43L35.084,29.401z">
+                                    </path>
+                                    <polygon class="smartplay-svg-color" points="28.124,20.215 28.124,14.991 24.635,17.99"></polygon>
+                                    <path class="smartplay-svg-color" d="M20.921,20.366h-6.423c-0.553,0-1,0.508-1,1.135v8.229c0,0.627,0.447,1.135,1,1.135h7.375l6.25,5.875V24.96L20.921,20.366z">
+                                    </path>
+                                </g>
+                            </svg>
+
+                            <span>Clique para ouvir</span>
+                        </div>
+                    </div>
+
+                    <script type="89c798df1195f8b3c72fb552-text/javascript">
+                        // Variáveis
+                        var myVideo = document.getElementById("video1");
+                        var playPauseButton = document.querySelector(".play-pause-button");
+                        var popup = document.getElementById("popup-xxx");
+                        var popupShown = false; // Variável de controle para verificar se o pop-up foi exibido
+
+                        // Função para alternar play/pause
+                        function playPause() {
+                            if (myVideo.paused) {
+                                myVideo.play();
+                                playPauseButton.classList.remove("play");
+                                playPauseButton.classList.add("pause");
+                            } else {
+                                myVideo.pause();
+                                playPauseButton.classList.remove("pause");
+                                playPauseButton.classList.add("play");
+                            }
+                            // Ocultar botão enquanto o vídeo está tocando
+                            playPauseButton.classList.toggle("hidden", !myVideo.paused);
+                        }
+
+                        // Adiciona event listener para play e pause para mostrar/ocultar o botão e o pop-up
+                        myVideo.addEventListener('play', function () {
+                            playPauseButton.classList.add("hidden");
+                            if (!popupShown) {
+                                popup.style.display = "block"; // Mostrar o pop-up apenas se ainda não foi mostrado
+                                popupShown = true; // Marcar o pop-up como exibido
+                            }
+                        });
+
+                        myVideo.addEventListener('pause', function () {
+                            playPauseButton.classList.remove("hidden");
+                        });
+
+                        // Reiniciar vídeo e mostrar com som quando o pop-up é clicado
+                        function restartVideo() {
+                            myVideo.currentTime = 0; // Reiniciar vídeo do início
+                            myVideo.muted = false;   // Desmutar o vídeo
+                            myVideo.play();          // Reproduzir o vídeo
+                            popup.style.display = "none"; // Ocultar o pop-up
+                        }
+
+                        // Funções de ajuste de tamanho
+                        function makeBig() {
+                            myVideo.width = 560;
+                            adjustButtonPosition();
+                        }
+
+                        function makeSmall() {
+                            myVideo.width = 320;
+                            adjustButtonPosition();
+                        }
+
+                        function makeNormal() {
+                            myVideo.width = 420;
+                            adjustButtonPosition();
+                        }
+
+                        // Ajustar posição do botão
+                        function adjustButtonPosition() {
+                            var videoContainer = document.querySelector(".video-container");
+                            videoContainer.style.width = myVideo.width + 'px';
+                        }
+
+                    </script>
+                </div>
+
+
+                <div class="progress-bar">
+                    <div class="progress" id="progress-bar" style="width: 0%;"></div>
+                </div>
+
+                <div class="question" id="etapa1">
+
+                    <h2>1. Em qual desses dispositivo você joga?</h2>
+                    <div class="answers">
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(1, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">Android</button>
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(1, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">Emulador</button>
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(1, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">Iphone</button>
+                    </div>
+                </div>
+
+                <div class="question hidden" id="etapa2">
+                    <h2>2. Você já caiu contra alguém que estava usando Xit?</h2>
+                    <div class="answers">
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(2, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">Sim!</button>
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(2, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">Não.</button>
+                    </div>
+                </div>
+
+                <div class="question hidden" id="etapa3">
+                    <h2>3. Análise e Responda, nesse vídeo acima o jogador parece estar Xitado?</h2>
+                    <div class="answers">
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(3, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">SIM</button>
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(3, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">XITADO DEMAIS!</button>
+                    </div>
+                </div>
+
+                <div class="question hidden" id="etapa4">
+                    <h2>4. Por que você quer usar Xit?</h2>
+                    <div class="answers">
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(4, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">Já usaram contra mim</button>
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(4, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">Para upar meus amigos</button>
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(4, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">Cansei de dar peito</button>
+                    </div>
+                </div>
+
+                <div class="question hidden" id="etapa5">
+                    <h2>5. Qual nome da arma acima</h2>
+                    <div class="answers">
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(5, false)" data-cf-modified-89c798df1195f8b3c72fb552-="">M1014</button>
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(5, true)" data-cf-modified-89c798df1195f8b3c72fb552-="">UMP</button>
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(5, false)" data-cf-modified-89c798df1195f8b3c72fb552-="">SCAR</button>
+                        <button onclick="if (!window.__cfRLUnblockHandlers) return false; verificaResposta(5, false)" data-cf-modified-89c798df1195f8b3c72fb552-="">USP</button>
+                    </div>
+                </div>
+
+
+                <div class="final-stage hidden" id="finalStage">
+                    <h2>🎉 Parabéns! Você conseguiu! 🎉</h2>
+                    <p>Você concluiu o desafio com sucesso e acaba de desbloquear um desconto incrível de 80%! 🛒✨ Não perca essa oportunidade de aproveitar nossos xits com essa oferta especial. Obrigado por participar.</p>
+                    <p>RESGATE SEU XIT ABAIXO ⬇</p>
+                    <div style="display: flex; flex-direction: column; gap: 8px">
+                        <a style="width: 100%;" href="https://w.app/Androidxit"><button style="width: 100%;">XIT ANDROID</buton></a>
+                        <a style="width: 100%;" href="https://w.app/Xitios"><button style="width: 100%;">XIT IPHONE</button></a>
+                    </div>
+                </div>
+
+                <div class="popup" id="popupErro">
+                    <img src="images/L8hqJNN0teTV.png" alt="X vermelho">
+                    <h2>Resposta errada, tente novamente.</h2>
+                </div>
+
+                <div class="loading" id="loading" style="display: none;">
+                    <img src="images/oq7-NB46-T2-CLLo176x7nz-1603038416591-orig.png" alt="Loading">
+                </div>
+
+                <footer>
+                    <p>HARO XIT © 2025 - Todos os direitos reservados</p>
+                </footer>
+            </strong></strong>
+    </div><strong><strong>
+
+            <script type="89c798df1195f8b3c72fb552-text/javascript">
+                let loadingActive = false;
+
+                function capturarVariaveisUrl() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const queryString = urlParams.toString();
+                    return queryString;
+                }
+
+
+                document.getElementById('resgatarDescontoBtn').addEventListener('click', function () {
+                    const queryParams = capturarVariaveisUrl();
+                    const redirectUrl = 'https://linktr.ee/rogi.metodos';
+                    window.location.href = `${redirectUrl}?${queryParams}`;
+                });
+
+                function verificaResposta(etapaAtual, isCorrect) {
+                    if (isCorrect) {
+                        document.getElementById("correctSound").play();
+                        mostrarLoading(etapaAtual);
+                    } else {
+                        document.getElementById("incorrectSound").play();
+                        mostrarPopupErro();
+                    }
+                }
+
+                function mostrarLoading(etapaAtual) {
+                    loadingActive = true;
+                    desabilitarRespostas(true);
+                    document.getElementById('loading').style.display = 'flex';
+                    setTimeout(() => {
+                        document.getElementById('loading').style.display = 'none';
+                        proximaEtapa(etapaAtual);
+                        desabilitarRespostas(false);
+                        loadingActive = false;
+                    }, 1500);
+                }
+
+                function proximaEtapa(etapaAtual) {
+                    // Ocultar a etapa atual
+                    document.getElementById('etapa' + etapaAtual).classList.add('hidden');
+                    atualizarProgressBar(etapaAtual + 1);
+
+                    // Mostrar a próxima etapa
+                    const proximaEtapa = etapaAtual + 1;
+                    const proximaPergunta = document.getElementById('etapa' + proximaEtapa);
+
+                    // Handle banner/video visibility based on stage
+                    const bannerElement = document.querySelector('.banner');
+                    const videoElement = document.querySelector('.video');
+                    const umpElement = document.querySelector('.ump');
+
+                    if (proximaEtapa === 3) {
+                        // At stage 3, show video and hide banner
+                        bannerElement.classList.add('hidden');
+                        videoElement.classList.remove('hidden');
+                        umpElement.classList.add('hidden');
+                    } else if (proximaEtapa === 5) {
+                        bannerElement.classList.add('hidden');
+                        videoElement.classList.add('hidden');
+                        umpElement.classList.remove('hidden');
+                    } else {
+                        bannerElement.classList.remove('hidden');
+                        videoElement.classList.add('hidden');
+                        umpElement.classList.add('hidden');
+                    }
+
+                    // Mostrar a próxima etapa se houver
+                    if (proximaPergunta) {
+                        proximaPergunta.classList.remove('hidden');
+                    }
+
+                    // Exibir a tela final se for a última etapa
+                    if (proximaEtapa > 5) {
+                        document.getElementById('finalStage').style.display = 'block';
+                        bannerElement.style.display = 'none'; // Ocultar banner
+                        document.getElementById('successSound').play();
+                        confetti({
+                            particleCount: 150,
+                            spread: 70,
+                            origin: { y: 0.6 }
+                        });
+                    }
+                }
+
+                function desabilitarRespostas(desabilitar) {
+                    // Desabilitar apenas os botões da etapa atual
+                    const botoes = document.querySelectorAll('.question:not(.hidden) .answers button');
+                    botoes.forEach(botao => {
+                        botao.disabled = desabilitar;
+                    });
+                }
+
+                function mostrarPopupErro() {
+                    desabilitarRespostas(true);
+                    const popup = document.getElementById('popupErro');
+                    popup.style.display = 'block';
+                    setTimeout(() => {
+                        popup.style.display = 'none';
+                        desabilitarRespostas(false);
+                    }, 2000);
+                }
+
+                function atualizarProgressBar(etapa) {
+                    const progresso = Math.min((etapa / 5) * 100, 100);
+                    document.getElementById('progress-bar').style.width = progresso + '%';
+                }
+
+                window.onload = function () {
+                    atualizarProgressBar(0);
+                };
+
+            </script>
+
+            <!-- Biblioteca de confete -->
+            <script src="js/N63euxWLh9qJ.js" type="89c798df1195f8b3c72fb552-text/javascript"></script>
+
+
+
+            <audio id="correctSound" src="media/auFryvj3CYMj.mp3" preload="auto"></audio>
+            <audio id="incorrectSound" src="media/d5j5Qh0sBz75.mp3" preload="auto"></audio>
+            <audio id="successSound" src="xmwdYuhkKU7S.html" preload="auto"></audio>
+
+
+
+        </strong></strong>
+        <script src="js/latest.js" data-utmify-prevent-subids="" async="" defer="" type="89c798df1195f8b3c72fb552-text/javascript"></script>
+<script src="js/rocket-loader.min.js" data-cf-settings="89c798df1195f8b3c72fb552-|49" defer=""></script>
+
+
+</body><!-- Elementos de áudio para reprodução dos sons de feedback --><!-- Mirrored by: HTTrack Website Copier/3.x. Site: desafiospremiado.com. File: /desafie/. Date: Thu, 14 Nov 2024 18:40:58 GMT --></html>
